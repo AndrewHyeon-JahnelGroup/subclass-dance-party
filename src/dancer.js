@@ -46,9 +46,10 @@ var makeDancer = function(top, left, timeBetweenSteps) {
 
 
 makeDancer.prototype.step = function() {
+
+  //this.$node.toggleClass
+
   setTimeout(this.step.bind(this), this.timeBetweenSteps);
-  
-  
 };
 
 makeDancer.prototype.setPosition = function(top, left) {
@@ -56,11 +57,30 @@ makeDancer.prototype.setPosition = function(top, left) {
   // where it belongs on the page. See http://api.jquery.com/css/
   //
   var styleSettings = {
-    top: top,
-    left: left  
+    'top': top,
+    'left': left  
   };
   this.$node.css(styleSettings);
 }; 
+
+makeDancer.prototype.lineUp = function(){
+
+  // get the array of all the dancer
+  var styleSettings  = {
+    'top': '300px', 
+    'transition-duration' : '3s'
+  };
+  
+  this.$node.css(styleSettings);
+  // for each jiggly dancer change top position
+};
+
+makeDancer.prototype.lineBreak = function(){
+  var newy = $("body").height() * Math.random();
+  var newx = $("body").width() * Math.random();
+  this.$node.animate( {'top': newy, 'left': newx}, 500);
+
+};
 
 
   // Creates and returns a new dancer object that can step

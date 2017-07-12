@@ -28,11 +28,64 @@ $(document).ready(function() {
     var dancer = new dancerMakerFunction(
       $("body").height() * Math.random(),
       $("body").width() * Math.random(),
-      Math.random()*100
+      Math.random() * 1000
     );
     $('body').append(dancer.$node);
 
     window.dancers.push(dancer);  
+  });
+
+  $('.addJigglyDancerButton').on('click', function(event) {
+    
+
+    var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
+
+    // get the maker function for the kind of dancer we're supposed to make
+    var dancerMakerFunction =  window[dancerMakerFunctionName];
+
+    // make a dancer with a random position
+    var dancer = new dancerMakerFunction(
+      $("body").height() * Math.random(),
+      $("body").width() * Math.random(),
+      1000
+    );
+
+    $('body').append(dancer.$node);
+
+
+    window.dancers.push(dancer);  
+  });
+
+  $('.addJPEGDancerButton').on('click', function(event) {
+          
+    var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
+
+    // get the maker function for the kind of dancer we're supposed to make
+    var dancerMakerFunction =  window[dancerMakerFunctionName];
+
+    // make a dancer with a random position
+    var dancer = new dancerMakerFunction(
+      $("body").height() * Math.random(),
+      $("body").width() * Math.random(),
+      Math.random() * 1000
+    );
+    $('body').append(dancer.$node);
+
+    window.dancers.push(dancer);  
+  });
+
+
+  $('.lineUpButton').on('click', function(event) {
+    window.dancers.forEach(function(el) {
+      el.lineUp();
+    });
+  
+  });
+  $('.lineBreakButton').on('click', function(event) {
+    window.dancers.forEach(function(el) {
+      el.lineBreak();
+    });
+  
   });
 
 });

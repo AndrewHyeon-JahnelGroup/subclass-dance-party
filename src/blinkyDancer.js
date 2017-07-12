@@ -24,6 +24,7 @@ var makeBlinkyDancer = function(top, left, timeBetweenSteps) {
   this.$node = $('<span class="blinkyDancer"></span>');
   this.timeBetweenSteps = timeBetweenSteps;
   
+  
   makeDancer.call(this, top, left, this.timeBetweenSteps);
   
   // this.step();
@@ -40,6 +41,7 @@ makeBlinkyDancer.prototype.step = function() {
   // toggle() is a jQuery method to show/hide the <span> tag.
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
+
   this.$node.toggle();
   
   var randomColor = function(){
@@ -47,7 +49,8 @@ makeBlinkyDancer.prototype.step = function() {
   };
   
   var styleSettings = {
-    'border-color' : '#' + randomColor()
+    'border-color' : '#' + randomColor(),
+    'animation-duration': '3s'
   };
 
   this.$node.css(styleSettings);
